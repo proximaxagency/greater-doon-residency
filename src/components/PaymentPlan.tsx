@@ -44,13 +44,83 @@ export const PaymentPlan: React.FC = () => {
         
         {/* Section Heading */}
         <div className="section-title-container">
-          <h2 className="section-title">{t("PROJECT PAYMENT PLAN", "भुगतान की समय-सीमा")}</h2>
+          <h2 className="section-title">{t("PROJECT PAYMENT PLAN & BOOKING", "भुगतान योजना और इकाई बुकिंग")}</h2>
           <p className="section-subtitle">
             {t(
               "Factual structured milestone payments linked to site layout development. No complex pre-EMI or hidden interest schemes.",
               "साइट लेआउट विकास से जुड़े वास्तविक संरचित मील का पत्थर भुगतान। कोई जटिल प्री-ईएमआई या छिपी हुई ब्याज योजनाएं नहीं।"
             )}
           </p>
+        </div>
+
+        {/* Highlight Banner for ₹51,000 Unit Booking */}
+        <div style={{
+          backgroundColor: 'var(--navy-blue)',
+          color: '#FFFFFF',
+          border: '2px solid var(--gold)',
+          borderRadius: '8px',
+          padding: '1.5rem',
+          marginBottom: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          gap: '1rem',
+          boxShadow: 'var(--shadow-md)'
+        }}>
+          <div>
+            <span style={{
+              backgroundColor: 'rgba(212, 175, 55, 0.2)',
+              color: 'var(--gold)',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              padding: '0.25rem 0.75rem',
+              borderRadius: '20px',
+              letterSpacing: '1px',
+              textTransform: 'uppercase'
+            }}>
+              {t("OFFICIAL INVENTORY DEPOSIT", "आधिकारिक इन्वेंट्री टोकन राशि")}
+            </span>
+            <h3 style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: '1.5rem',
+              color: '#FFFFFF',
+              marginTop: '0.5rem',
+              marginBottom: '0.25rem'
+            }}>
+              {t("BOOK YOUR UNIT AT ₹51,000 ONLY", "केवल ₹51,000 में अपनी इकाई बुक करें")}
+            </h3>
+            <p style={{
+              fontSize: '0.85rem',
+              color: 'rgba(255, 255, 255, 0.85)',
+              maxWidth: '650px',
+              margin: '0 auto'
+            }}>
+              {t(
+                "Transfer ₹51,000 token amount directly to H N CORPORATES PRIVATE LIMITED (HDFC Bank A/c: 50200002015680, IFSC: HDFC0001350) to reserve plot inventory.",
+                "प्लांट इन्वेंट्री सुरक्षित करने के लिए H N CORPORATES PRIVATE LIMITED (HDFC बैंक खाता: 50200002015680, IFSC: HDFC0001350) में ₹51,000 टोकन राशि ट्रांसफर करें।"
+              )}
+            </p>
+          </div>
+
+          <button
+            onClick={() => { window.location.hash = '#payments'; }}
+            style={{
+              backgroundColor: 'var(--gold)',
+              color: 'var(--navy-blue)',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '0.75rem 1.5rem',
+              fontWeight: '800',
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.2)'
+            }}
+          >
+            {t("VIEW PAYMENT DETAILS & BANK A/C", "बैंक खाता और भुगतान विवरण देखें")}
+          </button>
         </div>
 
         {/* Payment Timeline Grid */}

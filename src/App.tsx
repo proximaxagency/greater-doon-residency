@@ -20,9 +20,10 @@ import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { AdminPanel } from './components/AdminPanel';
+import { PaymentModal } from './components/PaymentModal';
 import { INITIAL_PROJECT_DATA } from './config/projectData';
 import type { ProjectData, ApprovalDocument } from './config/projectData';
-import { Phone, Calendar, MessageSquare, X, ShieldAlert, Check } from 'lucide-react';
+import { Phone, MessageSquare, X, ShieldAlert, Check, CreditCard } from 'lucide-react';
 
 const AppContent: React.FC = () => {
   const { t } = useLanguage();
@@ -33,13 +34,16 @@ const AppContent: React.FC = () => {
   const [popupSubmitted, setPopupSubmitted] = useState(false);
   const [popupData, setPopupData] = useState({ name: '', phone: '' });
   const [currentPage, setCurrentPage] = useState<string>('home');
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState<boolean>(false);
 
   // Hash-based router listener
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      const validPages = ['home', 'about', 'project', 'location', 'approvals', 'pmay', 'pricing', 'gallery', 'faq', 'contact'];
-      if (validPages.includes(hash)) {
+      const validPages = ['home', 'about', 'project', 'location', 'approvals', 'pmay', 'pricing', 'gallery', 'faq', 'contact', 'payments'];
+      if (hash === 'payments' || hash === 'payment') {
+        setIsPaymentModalOpen(true);
+      } else if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else {
         // Default to home if empty hash
@@ -363,11 +367,11 @@ const AppContent: React.FC = () => {
           <MessageSquare size={18} />
         </a>
         <button 
-          onClick={() => handleNavigate('contact')} 
-          style={{ ...desktopFloatStyle, backgroundColor: 'var(--gold)' }}
-          title={t("Book Site Visit", "साइट विज़िट बुक करें")}
+          onClick={() => setIsPaymentModalOpen(true)} 
+          style={{ ...desktopFloatStyle, backgroundColor: 'var(--gold)', color: 'var(--navy-blue)' }}
+          title={t("Book Unit & Payments (₹51,000)", "इकाई बुक करें और भुगतान (₹51,000)")}
         >
-          <Calendar size={18} />
+          <CreditCard size={18} />
         </button>
       </div>
 
@@ -397,13 +401,20 @@ const AppContent: React.FC = () => {
           <span>WHATSAPP</span>
         </a>
         <button 
-          onClick={() => handleNavigate('contact')}
+          onClick={() => setIsPaymentModalOpen(true)}
           style={{ ...mobileStickyBtnStyle, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}
         >
-          <Calendar size={16} className="text-gold" />
-          <span>{t("SITE VISIT", "साइट विज़िट")}</span>
+          <CreditCard size={16} className="text-gold" />
+          <span>{t("PAYMENTS", "भुगतान")}</span>
         </button>
       </div>
+
+      {/* 8. PAYMENT & BOOKING MODAL */}
+      <PaymentModal 
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        projectData={projectData}
+      />
 
       {/* Responsive media selectors style block */}
       <style>{`
