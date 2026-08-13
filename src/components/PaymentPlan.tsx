@@ -53,7 +53,7 @@ export const PaymentPlan: React.FC = () => {
           </p>
         </div>
 
-        {/* Highlight Banner for ₹51,000 Unit Booking */}
+        {/* Highlight Banner for ₹5,100 Paper Verification & ₹51,000 Unit Booking */}
         <div style={{
           backgroundColor: 'var(--navy-blue)',
           color: '#FFFFFF',
@@ -65,7 +65,7 @@ export const PaymentPlan: React.FC = () => {
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          gap: '1rem',
+          gap: '1.25rem',
           boxShadow: 'var(--shadow-md)'
         }}>
           <div>
@@ -79,7 +79,7 @@ export const PaymentPlan: React.FC = () => {
               letterSpacing: '1px',
               textTransform: 'uppercase'
             }}>
-              {t("OFFICIAL INVENTORY DEPOSIT", "आधिकारिक इन्वेंट्री टोकन राशि")}
+              {t("OFFICIAL PAYMENT OPTIONS", "आधिकारिक भुगतान विकल्प")}
             </span>
             <h3 style={{
               fontFamily: 'var(--font-serif)',
@@ -88,39 +88,60 @@ export const PaymentPlan: React.FC = () => {
               marginTop: '0.5rem',
               marginBottom: '0.25rem'
             }}>
-              {t("BOOK YOUR UNIT AT ₹51,000 ONLY", "केवल ₹51,000 में अपनी इकाई बुक करें")}
+              {t("PAPER VERIFICATION (₹5,100) OR UNIT BOOKING (₹51,000)", "कागजात सत्यापन (₹5,100) या इकाई बुकिंग (₹51,000)")}
             </h3>
             <p style={{
               fontSize: '0.85rem',
               color: 'rgba(255, 255, 255, 0.85)',
-              maxWidth: '650px',
+              maxWidth: '700px',
               margin: '0 auto'
             }}>
               {t(
-                "Transfer ₹51,000 token amount directly to H N CORPORATES PRIVATE LIMITED (HDFC Bank A/c: 50200002015680, IFSC: HDFC0001350) to reserve plot inventory.",
-                "प्लांट इन्वेंट्री सुरक्षित करने के लिए H N CORPORATES PRIVATE LIMITED (HDFC बैंक खाता: 50200002015680, IFSC: HDFC0001350) में ₹51,000 टोकन राशि ट्रांसफर करें।"
+                "Pay ₹5,100 for paper & legal title verification or ₹51,000 token deposit to reserve unit inventory directly to H N CORPORATES PRIVATE LIMITED (HDFC Bank A/c: 50200002015680, IFSC: HDFC0001350).",
+                "कागजात सत्यापन (₹5,100) या इकाई बुकिंग (₹51,000) के लिए सीधी राशि H N CORPORATES PRIVATE LIMITED (HDFC बैंक खाता: 50200002015680, IFSC: HDFC0001350) में जमा करें।"
               )}
             </p>
           </div>
 
-          <button
-            onClick={() => { window.location.hash = '#payments'; }}
-            style={{
-              backgroundColor: 'var(--gold)',
-              color: 'var(--navy-blue)',
-              border: 'none',
-              borderRadius: '4px',
-              padding: '0.75rem 1.5rem',
-              fontWeight: '800',
-              fontSize: '0.9rem',
-              cursor: 'pointer',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.2)'
-            }}
-          >
-            {t("VIEW PAYMENT DETAILS & BANK A/C", "बैंक खाता और भुगतान विवरण देखें")}
-          </button>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button
+              onClick={() => { window.location.hash = '#payments'; }}
+              style={{
+                backgroundColor: 'var(--gold)',
+                color: 'var(--navy-blue)',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '0.75rem 1.25rem',
+                fontWeight: '800',
+                fontSize: '0.85rem',
+                cursor: 'pointer',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.2)'
+              }}
+            >
+              {t("PAY PAPER VERIFICATION (₹5,100)", "कागजात सत्यापन भुगतान (₹5,100)")}
+            </button>
+
+            <button
+              onClick={() => { window.location.hash = '#payments'; }}
+              style={{
+                backgroundColor: '#FFFFFF',
+                color: 'var(--navy-blue)',
+                border: '1px solid var(--gold)',
+                borderRadius: '4px',
+                padding: '0.75rem 1.25rem',
+                fontWeight: '800',
+                fontSize: '0.85rem',
+                cursor: 'pointer',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.2)'
+              }}
+            >
+              {t("BOOK UNIT DEPOSIT (₹51,000)", "इकाई बुकिंग टोकन (₹51,000)")}
+            </button>
+          </div>
         </div>
 
         {/* Payment Timeline Grid */}
